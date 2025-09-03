@@ -7,6 +7,21 @@ import { cn } from "@/lib/utils";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
+// TypeScript declaration for custom element
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'pixel-canvas': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        'data-gap'?: number;
+        'data-speed'?: number;
+        'data-colors'?: string;
+        'data-variant'?: string;
+        'data-no-focus'?: string;
+      };
+    }
+  }
+}
+
 // Pixel Canvas Component
 class Pixel {
   width: number
