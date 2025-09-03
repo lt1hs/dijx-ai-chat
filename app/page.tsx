@@ -779,13 +779,19 @@ export const SignInPage = ({ className }: SignInPageProps) => {
               src="/dijlah(1).png" 
               alt="Dijlah Logo" 
               className="w-48 h-48 object-contain opacity-40"
+              onLoad={(e) => {
+                // Hide text fallback when image loads
+                const target = e.target as HTMLImageElement;
+                const fallback = target.nextElementSibling as HTMLElement;
+                if (fallback) fallback.style.display = 'none';
+              }}
               onError={(e) => {
-                // Fallback if image doesn't load
+                // Show text fallback if image doesn't load
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
               }}
             />
-            {/* Text fallback */}
+            {/* Text fallback - only shows if image fails */}
             <div className="absolute inset-0 flex items-center justify-center text-white/20 text-4xl font-bold">
               DIJ-X-V1
             </div>
