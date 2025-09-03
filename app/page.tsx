@@ -766,6 +766,31 @@ export const SignInPage = ({ className }: SignInPageProps) => {
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,1)_0%,_transparent_100%)]" />
         <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black to-transparent" />
+        
+        {/* Dijlah Logo */}
+        <div className="absolute inset-0 flex items-center justify-center z-5">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.4, scale: 1 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="relative"
+          >
+            <img 
+              src="/dijlah(1).png" 
+              alt="Dijlah Logo" 
+              className="w-48 h-48 object-contain opacity-40"
+              onError={(e) => {
+                // Fallback if image doesn't load
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
+            {/* Text fallback */}
+            <div className="absolute inset-0 flex items-center justify-center text-white/20 text-4xl font-bold">
+              DIJ-X-V1
+            </div>
+          </motion.div>
+        </div>
       </div>
       
       <div className="relative z-10 flex flex-col flex-1">
