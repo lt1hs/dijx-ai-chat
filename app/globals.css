@@ -137,6 +137,30 @@
     display: none;
   }
   
+  /* Mobile viewport fixes */
+  @media (max-width: 640px) {
+    .min-h-screen {
+      min-height: 100vh;
+      min-height: 100dvh; /* Dynamic viewport height for mobile */
+    }
+    
+    /* Prevent zoom on input focus */
+    input, textarea, select {
+      font-size: 16px !important;
+    }
+    
+    /* Better touch targets */
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Prevent horizontal scroll */
+    body {
+      overflow-x: hidden;
+    }
+  }
+  
   .glass-morphism {
     background: linear-gradient(135deg, rgba(17, 38, 62, 0.2) 0%, rgba(10, 26, 46, 0.3) 50%, rgba(22, 33, 62, 0.2) 100%);
     backdrop-filter: blur(24px);

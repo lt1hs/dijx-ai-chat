@@ -802,8 +802,8 @@ export const SignInPage = ({ className }: SignInPageProps) => {
       <div className="relative z-10 flex flex-col flex-1">
         <MiniNavbar />
         <div className="flex flex-1 flex-col lg:flex-row">
-          <div className="flex-1 flex flex-col justify-center items-center">
-            <div className="w-full mt-[150px] max-w-2xl">
+          <div className="flex-1 flex flex-col justify-center items-center px-4 sm:px-6">
+            <div className="w-full mt-[120px] sm:mt-[150px] max-w-2xl">
               <motion.div 
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -835,7 +835,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                 </motion.div>
                 
                 {/* Chat Messages */}
-                <div className={`w-full max-w-2xl mt-6 space-y-4 ${isChatMode ? 'min-h-[400px] max-h-[60vh] overflow-y-auto pb-32 scrollbar-hide' : 'min-h-[200px]'} transition-all duration-500`}>
+                <div className={`w-full max-w-2xl mt-6 space-y-4 px-2 sm:px-0 ${isChatMode ? 'min-h-[300px] sm:min-h-[400px] max-h-[50vh] sm:max-h-[60vh] overflow-y-auto pb-32 scrollbar-hide' : 'min-h-[200px]'} transition-all duration-500`}>
                   <AnimatePresence>
                     {messages.map((message) => (
                       <motion.div
@@ -846,9 +846,9 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                         transition={{ duration: 0.4, ease: "easeOut" }}
                         className={`flex ${message.isUser ? 'justify-start' : 'justify-end'}`}
                       >
-                        <div className={`max-w-[80%] ${message.isUser ? 'order-1' : 'order-2'}`}>
+                        <div className={`max-w-[85%] sm:max-w-[80%] ${message.isUser ? 'order-1' : 'order-2'}`}>
                           {message.isUser ? (
-                            <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/60 to-[#0a1a2e]/70 backdrop-blur-xl text-white mr-4 shadow-lg border border-white/20">
+                            <div className="relative p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/60 to-[#0a1a2e]/70 backdrop-blur-xl text-white mr-2 sm:mr-4 shadow-lg border border-white/20 text-sm sm:text-base">
                               <div className="relative z-10">
                                 {message.text}
                               </div>
@@ -856,7 +856,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                           ) : (
                             <div className="relative">
                               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 rounded-2xl blur-sm animate-pulse"></div>
-                              <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/40 to-[#0a1a2e]/50 backdrop-blur-xl border border-white/20 text-white shadow-xl">
+                              <div className="relative p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/40 to-[#0a1a2e]/50 backdrop-blur-xl border border-white/20 text-white shadow-xl text-sm sm:text-base">
                                 <div className="relative z-10">
                                   {message.text.split('').map((char, index) => (
                                     <motion.span
@@ -885,10 +885,10 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                         transition={{ duration: 0.4, ease: "easeOut" }}
                         className="flex justify-end"
                       >
-                        <div className="max-w-[80%] order-2">
+                        <div className="max-w-[85%] sm:max-w-[80%] order-2">
                           <div className="relative">
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 rounded-2xl blur-sm animate-pulse"></div>
-                            <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/40 to-[#0a1a2e]/50 backdrop-blur-xl border border-white/20 text-white ml-4 shadow-xl">
+                            <div className="relative p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/40 to-[#0a1a2e]/50 backdrop-blur-xl border border-white/20 text-white ml-2 sm:ml-4 shadow-xl">
                               <div className="flex items-center space-x-2 rtl:space-x-reverse">
                                 <div className="flex space-x-1 rtl:space-x-reverse">
                                   <motion.div
@@ -974,7 +974,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSendMessage())}
-                      className="relative w-full glass-morphism text-white rounded-2xl py-4 px-6 pl-16 focus:outline-none resize-none min-h-[120px] text-right z-10 shadow-2xl transition-all duration-300"
+                      className="relative w-full glass-morphism text-white rounded-2xl py-3 sm:py-4 px-4 sm:px-6 pl-12 sm:pl-16 focus:outline-none resize-none min-h-[100px] sm:min-h-[120px] text-right z-10 shadow-2xl transition-all duration-300 text-sm sm:text-base"
                       style={{ 
                         background: 'linear-gradient(135deg, rgba(17, 38, 62, 0.2) 0%, rgba(10, 26, 46, 0.3) 50%, rgba(22, 33, 62, 0.2) 100%)',
                         backdropFilter: 'blur(24px)',
@@ -984,7 +984,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                     />
                     <button 
                       onClick={handleSendMessage}
-                      className="absolute left-4 bottom-4 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#11263E]/80 to-[#0a1a2e]/90 hover:from-[#11263E] hover:to-[#0a1a2e] backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 z-10 overflow-hidden border border-white/20 hover:border-white/30"
+                      className="absolute left-2 sm:left-4 bottom-2 sm:bottom-4 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#11263E]/80 to-[#0a1a2e]/90 hover:from-[#11263E] hover:to-[#0a1a2e] backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 z-10 overflow-hidden border border-white/20 hover:border-white/30"
                       style={{ 
                         background: 'linear-gradient(135deg, rgba(17, 38, 62, 0.8) 0%, rgba(10, 26, 46, 0.9) 100%)',
                         backdropFilter: 'blur(24px)',
@@ -997,7 +997,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                         colors={["#ffd700", "#ffed4e", "#fbbf24", "#f59e0b", "#d97706"]}
                         variant="icon"
                       />
-                      <svg className="w-5 h-5 text-white relative z-10 transform hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white relative z-10 transform hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                       </svg>
                     </button>
@@ -1015,8 +1015,8 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       className="fixed bottom-0 left-0 right-0 z-50"
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-[#11263E] via-[#11263E]/95 to-transparent backdrop-blur-xl"></div>
-                      <div className="relative p-6">
-                        <div className="max-w-4xl mx-auto">
+                      <div className="relative p-4 sm:p-6">
+                        <div className="max-w-4xl mx-auto px-2 sm:px-0">
                           <div className="relative group glow-container">
                             <div className="absolute -inset-1 rounded-full overflow-hidden">
                               {/* Outer glow layer - premium shimmer effect */}
@@ -1044,19 +1044,19 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                               {/* Center mask with enhanced glow */}
                               <div className="absolute inset-1 bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 rounded-full glow-float"></div>
                             </div>
-                            <div className="relative flex items-center bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 backdrop-blur-xl border border-white/20 rounded-full p-3 shadow-2xl hover:border-white/30 transition-all duration-300">
+                            <div className="relative flex items-center bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 backdrop-blur-xl border border-white/20 rounded-full p-2 sm:p-3 shadow-2xl hover:border-white/30 transition-all duration-300">
                               <input
                                 type="text"
                                 placeholder="اسألني أي شيء..."
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSendMessage())}
-                                className="flex-1 bg-transparent text-white placeholder-white/60 px-6 py-3 focus:outline-none text-right text-lg backdrop-blur-sm"
+                                className="flex-1 bg-transparent text-white placeholder-white/60 px-4 sm:px-6 py-2 sm:py-3 focus:outline-none text-right text-base sm:text-lg backdrop-blur-sm"
                               />
                               <button
                                 onClick={handleSendMessage}
                                 disabled={isLoading}
-                                className="relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#11263E]/80 to-[#0a1a2e]/90 hover:from-[#11263E] hover:to-[#0a1a2e] backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/20 hover:border-white/30 disabled:opacity-50 group/btn"
+                                className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#11263E]/80 to-[#0a1a2e]/90 hover:from-[#11263E] hover:to-[#0a1a2e] backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/20 hover:border-white/30 disabled:opacity-50 group/btn"
                               >
                                 <div className="absolute inset-0 bg-gradient-to-r from-[#11263E]/30 to-[#0a1a2e]/40 rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                                 <PixelCanvas
@@ -1065,7 +1065,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                                   colors={["#ffd700", "#ffed4e", "#fbbf24", "#f59e0b", "#d97706"]}
                                   variant="icon"
                                 />
-                                <svg className="w-5 h-5 text-white relative z-10 transform group-hover/btn:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white relative z-10 transform group-hover/btn:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                                 </svg>
                               </button>
@@ -1081,7 +1081,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 1.3 }}
-                  className="flex flex-wrap gap-2 justify-center"
+                  className="flex flex-wrap gap-2 justify-center px-4 sm:px-0"
                 >
                   {["اشرح الحوسبة الكمية", "اكتب قصيدة", "تصحيح الكود", "خطط لرحلة"].map((suggestion, index) => (
                     <motion.button 
@@ -1095,7 +1095,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 text-sm bg-gradient-to-r from-[#11263E]/20 to-[#0a1a2e]/30 hover:from-[#11263E]/30 hover:to-[#0a1a2e]/40 backdrop-blur-xl text-white/70 hover:text-white border border-white/20 hover:border-white/30 rounded-full transition-all duration-300 shadow-lg"
+                      className="px-3 py-2 sm:px-4 text-xs sm:text-sm bg-gradient-to-r from-[#11263E]/20 to-[#0a1a2e]/30 hover:from-[#11263E]/30 hover:to-[#0a1a2e]/40 backdrop-blur-xl text-white/70 hover:text-white border border-white/20 hover:border-white/30 rounded-full transition-all duration-300 shadow-lg"
                     >
                       {suggestion}
                     </motion.button>
