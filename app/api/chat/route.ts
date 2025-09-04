@@ -29,32 +29,57 @@ Language Rule:
 
 أجب دائمًا باللغة العربية الفصحى.`
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY || 'sk-or-v1-free'}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'http://localhost:3000',
-        'X-Title': 'DIJ-X-V1 Chat'
-      },
-      body: JSON.stringify({
-        model: 'meta-llama/llama-3.2-3b-instruct:free',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: lastMessage }
-        ],
-        temperature: 0.7,
-        max_tokens: 1000
-      }),
-    })
+    // Try GROQ API first (more reliable), fallback to OpenRouter
+    const useGroq = process.env.GROQ_API_KEY && process.env.GROQ_API_KEY !== 'your_groq_api_key_here'
+    
+    let response
+    if (useGroq) {
+      response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'llama-3.1-8b-instant',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: lastMessage }
+          ],
+          temperature: 0.7,
+          max_tokens: 1000
+        }),
+      })
+    } else {
+      response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY || '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'}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'http://localhost:3000',
+          'X-Title': 'DIJ-X-V1 Chat'
+        },
+        body: JSON.stringify({
+          model: 'meta-llama/llama-3.2-3b-instruct:free',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: lastMessage }
+          ],
+          temperature: 0.7,
+          max_tokens: 1000
+        }),
+      })
+    }
 
     if (!response.ok) {
-      console.error('OpenRouter API Error:', response.status, response.statusText)
-      throw new Error(`API responded with ${response.status}`)
+      const apiName = useGroq ? 'GROQ' : 'OpenRouter'
+      console.error(`${apiName} API Error:`, response.status, response.statusText)
+      throw new Error(`${apiName} API responded with ${response.status}`)
     }
 
     const data = await response.json()
-    console.log('OpenRouter Response:', data)
+    const apiName = useGroq ? 'GROQ' : 'OpenRouter'
+    console.log(`${apiName} Response:`, data)
     
     let text = data.choices?.[0]?.message?.content || 'مرحباً! أنا DIJ-X-V1، مساعدك الذكي من شركة دجلة للتكنولوجيا. كيف يمكنني مساعدتك اليوم؟'
     

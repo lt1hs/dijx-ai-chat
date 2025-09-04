@@ -46,8 +46,8 @@ class Pixel {
     this.speed = this.getRandomValue(0.1, 0.9) * speed
     this.size = 0
     this.sizeStep = Math.random() * 0.4
-    this.minSize = 0.5
-    this.maxSizeInteger = 2
+    this.minSize = 0.3
+    this.maxSizeInteger = 1.2
     this.maxSize = this.getRandomValue(this.minSize, this.maxSizeInteger)
     this.delay = delay
     this.counter = 0
@@ -161,12 +161,12 @@ if (typeof window !== 'undefined') {
   }
 
   get colors() {
-    return this.dataset.colors?.split(",") || ["#f8fafc", "#f1f5f9", "#cbd5e1"]
+    return this.dataset.colors?.split(",") || ["#ffd700", "#ffed4e", "#fbbf24", "#f59e0b", "#d97706", "#b45309"]
   }
 
   get gap() {
-    const value = Number(this.dataset.gap) || 5
-    return Math.max(4, Math.min(50, value))
+    const value = Number(this.dataset.gap) || 3
+    return Math.max(2, Math.min(30, value))
   }
 
   get speed() {
@@ -759,13 +759,13 @@ export const SignInPage = ({ className }: SignInPageProps) => {
   };
 
   return (
-    <div className={cn("flex w-[100%] flex-col min-h-screen bg-black relative", className)}>
+    <div className={cn("flex w-[100%] flex-col min-h-screen relative", className)} style={{ background: 'linear-gradient(135deg, #11263E 0%, #0a1a2e 50%, #16213e 100%)' }}>
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0">
-          <CanvasRevealEffect animationSpeed={3} containerClassName="bg-black" colors={[[255, 255, 255], [255, 255, 255]]} dotSize={6} reverse={false} />
+          <CanvasRevealEffect animationSpeed={3} containerClassName="" colors={[[255, 215, 0], [255, 237, 78], [251, 191, 36], [245, 158, 11], [217, 119, 6], [180, 83, 9]]} dotSize={2} reverse={false} />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,1)_0%,_transparent_100%)]" />
-        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(17,38,62,0.8)_0%,_transparent_100%)]" />
+        <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-[#11263E] to-transparent" />
         
         {/* Dijlah Logo */}
         <div className="absolute inset-0 flex items-center justify-center z-5">
@@ -793,7 +793,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
             />
             {/* Text fallback - only shows if image fails */}
             <div className="absolute inset-0 flex items-center justify-center text-white/20 text-4xl font-bold">
-              DIJ-X-V1
+              {/* DIJ-X-V1 */}
             </div>
           </motion.div>
         </div>
@@ -848,15 +848,15 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       >
                         <div className={`max-w-[80%] ${message.isUser ? 'order-1' : 'order-2'}`}>
                           {message.isUser ? (
-                            <div className="relative p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mr-4 shadow-lg">
+                            <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/60 to-[#0a1a2e]/70 backdrop-blur-xl text-white mr-4 shadow-lg border border-white/20">
                               <div className="relative z-10">
                                 {message.text}
                               </div>
                             </div>
                           ) : (
                             <div className="relative">
-                              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-blue-400/30 to-gold-500/20 rounded-2xl blur-sm animate-pulse"></div>
-                              <div className="relative p-4 rounded-2xl bg-gradient-to-br from-gray-900/95 to-black/95 backdrop-blur-sm border border-blue-400/20 text-white  shadow-xl">
+                              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 rounded-2xl blur-sm animate-pulse"></div>
+                              <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/40 to-[#0a1a2e]/50 backdrop-blur-xl border border-white/20 text-white shadow-xl">
                                 <div className="relative z-10">
                                   {message.text.split('').map((char, index) => (
                                     <motion.span
@@ -887,22 +887,22 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       >
                         <div className="max-w-[80%] order-2">
                           <div className="relative">
-                            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-blue-400/30 to-gold-500/20 rounded-2xl blur-sm animate-pulse"></div>
-                            <div className="relative p-4 rounded-2xl bg-gradient-to-br from-gray-900/95 to-black/95 backdrop-blur-sm border border-blue-400/20 text-white ml-4 shadow-xl">
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 rounded-2xl blur-sm animate-pulse"></div>
+                            <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#11263E]/40 to-[#0a1a2e]/50 backdrop-blur-xl border border-white/20 text-white ml-4 shadow-xl">
                               <div className="flex items-center space-x-2 rtl:space-x-reverse">
                                 <div className="flex space-x-1 rtl:space-x-reverse">
                                   <motion.div
-                                    className="w-2 h-2 bg-blue-400 rounded-full"
+                                    className="w-2 h-2 bg-[#ffd700] rounded-full"
                                     animate={{ scale: [1, 1.2, 1] }}
                                     transition={{ duration: 1, repeat: Infinity, delay: 0 }}
                                   />
                                   <motion.div
-                                    className="w-2 h-2 bg-blue-400 rounded-full"
+                                    className="w-2 h-2 bg-[#ffd700] rounded-full"
                                     animate={{ scale: [1, 1.2, 1] }}
                                     transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
                                   />
                                   <motion.div
-                                    className="w-2 h-2 bg-blue-400 rounded-full"
+                                    className="w-2 h-2 bg-[#ffd700] rounded-full"
                                     animate={{ scale: [1, 1.2, 1] }}
                                     transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
                                   />
@@ -924,7 +924,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9, y: -20 }}
                     transition={{ duration: 0.8, delay: 1.1, ease: "easeOut" }}
-                    className="relative group"
+                    className="relative group glow-container"
                   >
                     {showAnimation && (
                       <div key={animationKey} className="absolute inset-0 rounded-2xl overflow-hidden z-20 pointer-events-none">
@@ -932,8 +932,8 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                           <CanvasRevealEffect
                             animationSpeed={0.6}
                             containerClassName="bg-transparent"
-                            colors={[[30, 144, 255], [255, 215, 0], [135, 206, 250]]}
-                            dotSize={3}
+                            colors={[[255, 215, 0], [255, 237, 78], [251, 191, 36], [245, 158, 11], [217, 119, 6], [180, 83, 9]]}
+                            dotSize={1.5}
                             opacities={[0.1, 0.1, 0.1, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3, 0.4]}
                             showGradient={false}
                           />
@@ -949,23 +949,24 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       </div>
                     )}
                     
-                    <div className="absolute -inset-1 overflow-hidden rounded-2xl blur-[3px] 
-                                    before:absolute before:content-[''] before:z-[-2] before:w-[999px] before:h-[999px] before:bg-no-repeat before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rotate-60
-                                    before:bg-[conic-gradient(#000,#1e90ff_5%,#000_38%,#000_50%,#ffd700_60%,#000_87%)] before:transition-all before:duration-2000
-                                    group-hover:before:rotate-[-120deg] group-focus-within:before:rotate-[420deg] group-focus-within:before:duration-[4000ms]
-                                    after:absolute after:content-[''] after:inset-1 after:bg-black after:rounded-2xl after:z-[-1]">
+                    {/* Enhanced premium multi-layer glow effect */}
+                    <div className="absolute -inset-1 overflow-hidden rounded-2xl blur-[4px] opacity-70
+                                    before:absolute before:content-[''] before:z-[-2] before:w-[700px] before:h-[700px] before:bg-no-repeat before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rotate-0
+                                    before:bg-[conic-gradient(rgba(65,105,225,0.7),rgba(218,165,32,0.9),rgba(65,105,225,0.7),rgba(65,105,225,0.7))] before:transition-all before:duration-[12000ms] before:cubic-bezier(0.25,0.46,0.45,0.94)
+                                    group-hover:before:rotate-[-120deg] group-focus-within:before:rotate-[240deg] group-focus-within:before:duration-[15000ms]
+                                    after:absolute after:content-[''] after:inset-1 after:bg-gradient-to-br after:from-[#11263E]/20 after:to-[#0a1a2e]/30 after:rounded-2xl after:z-[-1]">
                     </div>
-                    <div className="absolute -inset-0.5 overflow-hidden rounded-2xl blur-[2px] 
-                                    before:absolute before:content-[''] before:z-[-2] before:w-[600px] before:h-[600px] before:bg-no-repeat before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rotate-[82deg]
-                                    before:bg-[conic-gradient(rgba(0,0,0,0),#4169e1,rgba(0,0,0,0)_10%,rgba(0,0,0,0)_50%,#daa520,rgba(0,0,0,0)_60%)] before:transition-all before:duration-2000
-                                    group-hover:before:rotate-[-98deg] group-focus-within:before:rotate-[442deg] group-focus-within:before:duration-[4000ms]
-                                    after:absolute after:content-[''] after:inset-0.5 after:bg-black after:rounded-2xl after:z-[-1]">
+                    <div className="absolute -inset-0.5 overflow-hidden rounded-2xl blur-[3px] opacity-60
+                                    before:absolute before:content-[''] before:z-[-2] before:w-[600px] before:h-[600px] before:bg-no-repeat before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rotate-[45deg]
+                                    before:bg-[conic-gradient(rgba(65,105,225,0.5),rgba(218,165,32,0.7),rgba(65,105,225,0.5),rgba(65,105,225,0.5))] before:transition-all before:duration-[10000ms] before:cubic-bezier(0.25,0.46,0.45,0.94)
+                                    group-hover:before:rotate-[-45deg] group-focus-within:before:rotate-[195deg] group-focus-within:before:duration-[12000ms]
+                                    after:absolute after:content-[''] after:inset-0.5 after:bg-gradient-to-br after:from-[#11263E]/15 after:to-[#0a1a2e]/25 after:rounded-2xl after:z-[-1]">
                     </div>
-                    <div className="absolute -inset-px overflow-hidden rounded-2xl blur-[1px] 
-                                    before:absolute before:content-[''] before:z-[-2] before:w-[600px] before:h-[600px] before:bg-no-repeat before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rotate-[83deg]
-                                    before:bg-[conic-gradient(rgba(0,0,0,0)_0%,#87ceeb,rgba(0,0,0,0)_8%,rgba(0,0,0,0)_50%,#f0e68c,rgba(0,0,0,0)_58%)] before:brightness-140
-                                    before:transition-all before:duration-2000 group-hover:before:rotate-[-97deg] group-focus-within:before:rotate-[443deg] group-focus-within:before:duration-[4000ms]
-                                    after:absolute after:content-[''] after:inset-px after:bg-black after:rounded-2xl after:z-[-1]">
+                    <div className="absolute -inset-px overflow-hidden rounded-2xl blur-[2px] opacity-50
+                                    before:absolute before:content-[''] before:z-[-2] before:w-[500px] before:h-[500px] before:bg-no-repeat before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rotate-[90deg]
+                                    before:bg-[conic-gradient(rgba(65,105,225,0.4),rgba(218,165,32,0.6),rgba(65,105,225,0.4),rgba(65,105,225,0.4))] before:transition-all before:duration-[8000ms] before:cubic-bezier(0.25,0.46,0.45,0.94)
+                                    group-hover:before:rotate-[0deg] group-focus-within:before:rotate-[180deg] group-focus-within:before:duration-[10000ms]
+                                    after:absolute after:content-[''] after:inset-px after:bg-gradient-to-br after:from-[#11263E]/12 after:to-[#0a1a2e]/20 after:rounded-2xl after:z-[-1]">
                     </div>
                     
                     <textarea 
@@ -973,17 +974,27 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSendMessage())}
-                      className="relative w-full backdrop-blur-[1px] text-white bg-black/80 border border-white/10 rounded-2xl py-4 px-6 pl-16 focus:outline-none focus:border-white/30 resize-none min-h-[120px] text-right z-10"
+                      className="relative w-full glass-morphism text-white rounded-2xl py-4 px-6 pl-16 focus:outline-none resize-none min-h-[120px] text-right z-10 shadow-2xl transition-all duration-300"
+                      style={{ 
+                        background: 'linear-gradient(135deg, rgba(17, 38, 62, 0.2) 0%, rgba(10, 26, 46, 0.3) 50%, rgba(22, 33, 62, 0.2) 100%)',
+                        backdropFilter: 'blur(24px)',
+                        WebkitBackdropFilter: 'blur(24px)'
+                      }}
                       rows={4}
                     />
                     <button 
                       onClick={handleSendMessage}
-                      className="absolute left-4 bottom-4 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 shadow-lg hover:shadow-xl transition-all duration-300 z-10 overflow-hidden border border-blue-400/30"
+                      className="absolute left-4 bottom-4 w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#11263E]/80 to-[#0a1a2e]/90 hover:from-[#11263E] hover:to-[#0a1a2e] backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 z-10 overflow-hidden border border-white/20 hover:border-white/30"
+                      style={{ 
+                        background: 'linear-gradient(135deg, rgba(17, 38, 62, 0.8) 0%, rgba(10, 26, 46, 0.9) 100%)',
+                        backdropFilter: 'blur(24px)',
+                        WebkitBackdropFilter: 'blur(24px)'
+                      }}
                     >
                       <PixelCanvas
-                        gap={2}
+                        gap={1.5}
                         speed={60}
-                        colors={["#ffffff", "#ffd700", "#87ceeb"]}
+                        colors={["#ffd700", "#ffed4e", "#fbbf24", "#f59e0b", "#d97706"]}
                         variant="icon"
                       />
                       <svg className="w-5 h-5 text-white relative z-10 transform hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1003,38 +1014,55 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       transition={{ duration: 0.5, ease: "easeOut" }}
                       className="fixed bottom-0 left-0 right-0 z-50"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/95 to-transparent backdrop-blur-xl"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#11263E] via-[#11263E]/95 to-transparent backdrop-blur-xl"></div>
                       <div className="relative p-6">
                         <div className="max-w-4xl mx-auto">
-                          <div className="relative group">
-                            <div className="absolute -inset-1 rounded-full">
+                          <div className="relative group glow-container">
+                            <div className="absolute -inset-1 rounded-full overflow-hidden">
+                              {/* Outer glow layer - premium shimmer effect */}
                               <div 
-                                className="absolute inset-0 rounded-full blur-md opacity-75"
+                                className="absolute inset-0 rounded-full blur-xl opacity-60 glow-premium"
                                 style={{
-                                  background: 'conic-gradient(from 0deg, rgba(65, 105, 225, 0.6), rgba(218, 165, 32, 0.8), rgba(65, 105, 225, 0.6))',
-                                  animation: 'spin 4s linear infinite'
+                                  background: 'conic-gradient(from 0deg, rgba(65, 105, 225, 0.8), rgba(218, 165, 32, 1), rgba(65, 105, 225, 0.8), rgba(65, 105, 225, 0.8))'
                                 }}
                               ></div>
+                              {/* Middle glow layer - elegant breathing */}
+                              <div 
+                                className="absolute inset-0 rounded-full blur-lg opacity-50 glow-elegant"
+                                style={{
+                                  background: 'conic-gradient(from 45deg, rgba(65, 105, 225, 0.6), rgba(218, 165, 32, 0.8), rgba(65, 105, 225, 0.6), rgba(65, 105, 225, 0.6))',
+                                  animationDelay: '1.5s'
+                                }}
+                              ></div>
+                              {/* Inner glow layer - smooth rotation */}
+                              <div 
+                                className="absolute inset-0 rounded-full blur-md opacity-70 glow-rotate"
+                                style={{
+                                  background: 'conic-gradient(from 90deg, rgba(65, 105, 225, 0.5), rgba(218, 165, 32, 0.7), rgba(65, 105, 225, 0.5), rgba(65, 105, 225, 0.5))'
+                                }}
+                              ></div>
+                              {/* Center mask with enhanced glow */}
+                              <div className="absolute inset-1 bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 rounded-full glow-float"></div>
                             </div>
-                            <div className="relative flex items-center bg-gradient-to-r from-gray-900/95 via-black/95 to-gray-900/95 backdrop-blur-sm border border-white/10 rounded-full p-3 shadow-2xl">
+                            <div className="relative flex items-center bg-gradient-to-r from-[#11263E]/30 via-[#0a1a2e]/40 to-[#16213e]/30 backdrop-blur-xl border border-white/20 rounded-full p-3 shadow-2xl hover:border-white/30 transition-all duration-300">
                               <input
                                 type="text"
                                 placeholder="اسألني أي شيء..."
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSendMessage())}
-                                className="flex-1 bg-transparent text-white placeholder-white/50 px-6 py-3 focus:outline-none text-right text-lg"
+                                className="flex-1 bg-transparent text-white placeholder-white/60 px-6 py-3 focus:outline-none text-right text-lg backdrop-blur-sm"
                               />
                               <button
                                 onClick={handleSendMessage}
                                 disabled={isLoading}
-                                className="relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-blue-400/30 disabled:opacity-50 group/btn"
+                                className="relative w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-[#11263E]/80 to-[#0a1a2e]/90 hover:from-[#11263E] hover:to-[#0a1a2e] backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/20 hover:border-white/30 disabled:opacity-50 group/btn"
                               >
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-blue-600/20 rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#11263E]/30 to-[#0a1a2e]/40 rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                                 <PixelCanvas
-                                  gap={2}
+                                  gap={1.5}
                                   speed={60}
-                                  colors={["#ffffff", "#ffd700", "#87ceeb"]}
+                                  colors={["#ffd700", "#ffed4e", "#fbbf24", "#f59e0b", "#d97706"]}
                                   variant="icon"
                                 />
                                 <svg className="w-5 h-5 text-white relative z-10 transform group-hover/btn:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1067,7 +1095,7 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                       }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 text-sm bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10 rounded-full transition-colors"
+                      className="px-4 py-2 text-sm bg-gradient-to-r from-[#11263E]/20 to-[#0a1a2e]/30 hover:from-[#11263E]/30 hover:to-[#0a1a2e]/40 backdrop-blur-xl text-white/70 hover:text-white border border-white/20 hover:border-white/30 rounded-full transition-all duration-300 shadow-lg"
                     >
                       {suggestion}
                     </motion.button>
